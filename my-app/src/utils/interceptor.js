@@ -1,9 +1,10 @@
 import axios from "axios";
 
 let baseURL = 'https://www.demo.pms.crossdevlogix.com';
-let token = localStorage.getItem("token");
+
 const setAuthorizationToken = () => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  let token = localStorage.getItem("token");
 };
 
 const instance = axios.create({

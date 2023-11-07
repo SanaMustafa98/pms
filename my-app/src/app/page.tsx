@@ -4,8 +4,6 @@ import { useState } from "react";
 import "./globals.css";
 
 
-
-
 export default function Home() {
   const [formvalue, setFormvalue] = useState({ email: '', password: '' });
   const [apiResponse, setApiResponse] = useState(null);
@@ -68,6 +66,7 @@ const handleFormsubmit = async (e:any) => {
           alt="Logo"
           className="w-32 h-32 mx-auto"
         />
+        
         <h2 className="text-2xl font-semibold text-white mt-2">
           Sign In Form</h2>
       </div>
@@ -81,22 +80,17 @@ const handleFormsubmit = async (e:any) => {
           </label>
           <input
             className="shadow appearance-none 
-            border rounded w-full py-2 px-3 
-            text-black 
-            leading-tight focus:outline-none 
-            focus:shadow-outline"
-            id="email"
+            border rounded w-full py-2 px-3  text-black  leading-tight focus:outline-none  focus:shadow-outline"
 
+            id="email"
             type="text"
             placeholder="email"
             name = 'email'
             value={formvalue.email}
             onChange={handleInput}
           />
+
         </div>
-
-
-
         <div className="mb-6">
           <label className="block text-white text-sm
            font-bold mb-2" 
@@ -115,9 +109,11 @@ const handleFormsubmit = async (e:any) => {
             value={formvalue.password}
             onChange={handleInput}
           />
+         
         </div>
-        <div className="flex items-center
-         justify-between">
+
+        <div className="justify content-center">
+
          
          <button 
            className="bg-white 
@@ -128,14 +124,6 @@ const handleFormsubmit = async (e:any) => {
           type="button" onClick={() => router.push('/welcome')}>
       Login
     </button>
-
-
-{/* <Button
- 
-  onClick={() => router.push('/welcome')}>
-  Login
-</Button> */}
-      
         </div>
       </form>
     </div>

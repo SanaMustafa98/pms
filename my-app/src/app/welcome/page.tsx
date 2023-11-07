@@ -1,7 +1,5 @@
 'use client'
 import { useState } from "react";
-
-
 import {
   AiFillEnvironment,
   AiOutlineLogin
@@ -43,7 +41,7 @@ import {
 // ===================
 
 
-const page = () => {
+const Page = () => {
 
   const [selectedMenuItem, setSelectedMenuItem] = useState("");
   const [currentPage, setCurrentPage] = useState("");
@@ -107,9 +105,8 @@ const page = () => {
         </div>
 
         {/* sidebar menu */}
-
         <ul className=" pt-2">
-          {Menus.map((menu) => (
+          {Menus.map((menu ) => (
             <>
               <li
                 key={menu.title}  
@@ -123,26 +120,20 @@ const page = () => {
                  ${selectedMenuItem === menu.title ? "bg-black text-white" : ""
                   }`}
               >
-   
-
                 {/* for icons of sidebar */}
                 <span className="text-2xl block  float-left">
                   {menu.icon ? menu.icon : <RiDashboardFill />}
-
                 </span>
 
                 <span className={`text-base font-medium 
                 flex-1 duration-200
                    ${!open && "hidden"}`}>
                   {menu.title}</span>
-
               </li>
             </>
           ))}
 
         </ul>
-
-
       </div>
 
 
@@ -183,4 +174,4 @@ const page = () => {
 
 };
 
-export default page
+export default Page;
