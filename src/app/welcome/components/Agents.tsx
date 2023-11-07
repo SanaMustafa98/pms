@@ -1,7 +1,8 @@
 
 const Agents = () => {
   return (
-    <div>Agents</div>
+    <div>Agents have no api data</div>
+    
   )
 }
 
