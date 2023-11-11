@@ -20,6 +20,13 @@ interface Tenant {
 }
 
 const TenantsPage = () => {
+  // for post
+  const [full_name_variable, setFullnameVariable] = useState('');
+  const [email_variable, setEmailVariable] = useState('');
+  const [number_variable, setNumberVariable] = useState('');
+  const [address_variable, setAddressVariable] = useState('');
+  //==========
+   
   const [tenantsData, setTenantsData] = useState<Tenant[]>([]);
 
   useEffect(() => {
@@ -40,8 +47,25 @@ const TenantsPage = () => {
 
     fetchTenants();
   }, []);
-
+ 
+ //======================POST
+  const handleSubmit = () => {
+    const formData = new FormData();
+    formData.append('full_name', full_name_variable);
+    formData.append('email', email_variable);
+    formData.append('number', number_variable);
+    formData.append('address', address_variable);
+    // console.log(formData);
+    instance.post('api/tenants/store', formData).then((res) => {
+      console.log(res)
+    } )
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+//========
   return (
+    <>
     <div className="p-4">
       <h1 className="text-2xl font-bold">Tenants Data</h1>
       <table className="w-full mt-4 bg-gray-100">
@@ -68,6 +92,36 @@ const TenantsPage = () => {
         </tbody>
       </table>
     </div>
+    <div className="p-4 bg-gray3">
+        {/* ... */}
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={full_name_variable}
+          onChange={(e) => setFullnameVariable(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email_variable}
+          onChange={(e) => setEmailVariable(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="Phone Number"
+          value={number_variable}
+          onChange={(e) => setNumberVariable(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Address"
+          value={address_variable}
+          onChange={(e) => setAddressVariable(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
+
+    </>
   );
 };
 

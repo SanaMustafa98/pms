@@ -7,6 +7,7 @@ const setAuthorizationToken = () => {
   let token = localStorage.getItem("token");
 };
 
+
 const instance = axios.create({
   baseURL:baseURL,
 });
@@ -28,6 +29,7 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 
 export default setAuthorizationToken;
 export { instance };
